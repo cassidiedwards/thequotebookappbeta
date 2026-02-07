@@ -419,6 +419,12 @@
 </footer>
 
 <script>
+  window.addEventListener("load", () => {
+    if (window.location.hash) {
+      history.replaceState(null, "", window.location.pathname + window.location.search);
+    }
+    window.scrollTo(0, 0);
+  });
   // Build badge from URL (?build=1.0.12)
   const params = new URLSearchParams(window.location.search);
   const build = params.get("build");
