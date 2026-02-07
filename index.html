@@ -24,7 +24,7 @@
 
         header {
             text-align: center;
-            padding: 80px 20px 60px;
+            padding: 80px 20px 40px;
         }
 
         header h1 {
@@ -37,6 +37,56 @@
             color: var(--muted);
             max-width: 600px;
             margin: 0 auto;
+        }
+
+        .badges {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 18px;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            border-radius: 999px;
+            background: rgba(108,99,255,0.12);
+            color: #2b2b5f;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border: 1px solid rgba(108,99,255,0.18);
+        }
+
+        .badge small {
+            color: var(--muted);
+            font-weight: 600;
+        }
+
+        .tester-nav {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin: 24px 0 8px;
+        }
+
+        .tester-nav a {
+            display: inline-block;
+            padding: 10px 14px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            color: var(--text);
+            background: rgba(255,183,3,0.16);
+            border: 1px solid rgba(255,183,3,0.22);
+            transition: transform 0.15s ease;
+        }
+
+        .tester-nav a:hover {
+            transform: translateY(-1px);
         }
 
         .container {
@@ -56,9 +106,12 @@
         h2 {
             margin-top: 0;
             color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        ul {
+        ul, ol {
             padding-left: 20px;
         }
 
@@ -89,6 +142,61 @@
             box-shadow: 0 12px 28px rgba(108,99,255,0.45);
         }
 
+        .app-preview {
+            display: flex;
+            justify-content: center;
+            margin: 40px 0;
+        }
+
+        .app-preview img {
+            max-width: 280px;
+            width: 100%;
+            border-radius: 28px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            background: #000;
+        }
+
+        .template {
+            margin-top: 14px;
+            padding: 14px;
+            border-radius: 14px;
+            background: #F3F4F6;
+            border: 1px solid rgba(0,0,0,0.06);
+        }
+
+        .template pre {
+            margin: 0;
+            white-space: pre-wrap;
+            word-break: break-word;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+            font-size: 0.95rem;
+        }
+
+        .copy-row {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 10px;
+        }
+
+        .copy-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            padding: 10px 14px;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(108,99,255,0.25);
+        }
+
+        .dev-cta {
+            margin-top: 14px;
+            padding: 14px;
+            border-radius: 14px;
+            background: rgba(108,99,255,0.10);
+            border: 1px solid rgba(108,99,255,0.18);
+        }
+
         footer {
             text-align: center;
             padding: 40px 20px;
@@ -96,21 +204,18 @@
             font-size: 0.9rem;
         }
 
-        .emoji {
-            font-size: 1.3rem;
-        }
-        .app-preview {
-        display: flex;
-        justify-content: center;
-        margin: 40px 0;
+        footer a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
         }
 
-        .app-preview img {
-        max-width: 280px;
-        width: 100%;
-        border-radius: 28px;
-        box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-        background: #000;
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .anchor-target {
+            scroll-margin-top: 24px;
         }
     </style>
 </head>
@@ -122,94 +227,126 @@
         A private place to save memorable quotes, inside jokes,
         and moments — and play a fun “Who Said That?” game with friends.
     </p>
+
+    <div class="badges">
+        <div class="badge">
+            🧪 Beta <small id="buildBadge">Build: —</small>
+        </div>
+    </div>
+
+    <nav class="tester-nav">
+        <a href="#friends">🧡 Family & Friends</a>
+        <a href="#devs">🧑‍💻 Developers</a>
+        <a href="#feedback">💬 Feedback</a>
+    </nav>
 </header>
+
 <div class="app-preview">
-    <img 
-        src="QuoteBookAppIcon.png" 
-        alt="The Quote Book App screenshot"
-    />
+    <img src="QuoteBookAppIcon.png" alt="The Quote Book App screenshot" />
 </div>
+
 <div class="container">
 
-    <div class="card">
-        <h2>✨ What is this?</h2>
-        <p>
-            The Quote Book App is a personal, cloud-backed iOS app for collecting
-            quotes and sharing them with people you trust.
-        </p>
+    <div id="friends" class="card anchor-target">
+        <h2>🧡 Family & Friends</h2>
         <ul>
-            <li>Save quotes you don’t want to forget</li>
-            <li>Add context like who said it and where</li>
-            <li>Mark favorites</li>
-            <li>Sync securely using iCloud</li>
-            <li>Try early multiplayer “Who Said That?” game features</li>
+            <li>Is anything confusing or hard to find?</li>
+            <li>Does adding or viewing quotes feel easy?</li>
+            <li>Do favorites and sharing work as expected?</li>
+            <li>Does anything feel unnecessary or missing?</li>
         </ul>
+
+        <div class="template">
+            <strong>Copy & paste feedback template:</strong>
+            <pre id="friendsTemplate">Device / iOS:
+What I was trying to do:
+What I expected:
+What happened:
+Screenshot (optional):</pre>
+            <div class="copy-row">
+                <button class="copy-btn" data-copy="friendsTemplate">Copy template</button>
+            </div>
+        </div>
     </div>
 
-    <div class="card">
-        <h2>🧪 Why this is a beta</h2>
+    <div id="devs" class="card anchor-target">
+        <h2>🧑‍💻 Developers</h2>
         <ul>
-            <li>Some features are still evolving</li>
-            <li>You may see UI changes between updates</li>
-            <li>Data may reset occasionally</li>
+            <li>CloudKit sync behavior and edge cases</li>
+            <li>State handling and navigation flow</li>
+            <li>Error handling and recovery</li>
+            <li>Performance observations</li>
+            <li>Architecture/refactor suggestions</li>
         </ul>
-        <p>
-            Your feedback helps shape how the app grows 💛
-        </p>
+
+        <div class="template">
+            <strong>Copy & paste debug template:</strong>
+            <pre id="devTemplate">Device / iOS:
+Build:
+Steps to reproduce:
+Expected:
+Actual:
+Frequency:
+Logs or screenshots:</pre>
+            <div class="copy-row">
+                <button class="copy-btn" data-copy="devTemplate">Copy template</button>
+            </div>
+        </div>
+
+        <div class="dev-cta">
+            <strong>Dev-only contact:</strong><br/>
+            <a href="mailto:cassidiedwards12@yahoo.com?subject=Quote%20Book%20Beta%20Feedback">
+                cassidiedwards12@yahoo.com
+            </a>
+        </div>
     </div>
 
-    <div class="card">
-        <h2>📲 How to join the TestFlight</h2>
-        <i>Must have Apple Device running on iOS 26 or later.</i>
-        <ol>
-            <li>Install Apple’s <strong>TestFlight</strong> app from the App Store</li>
-            <li>Tap the button below</li>
-            <li>Install The Quote Book App</li>
-        </ol>
-    </div>
-
-    <div class="cta">
-        <!-- Replace this link with your real TestFlight public link -->
-        <a href="https://testflight.apple.com/join/YOURCODEHERE">
-            🚀 Join the TestFlight Beta
-        </a>
-    </div>
-
-    <div class="card">
+    <div id="feedback" class="card anchor-target">
         <h2>💬 How to give feedback</h2>
         <ul>
             <li>Use <strong>TestFlight → Send Feedback</strong></li>
-            <li>Or message me directly with:
-                <ul>
-                    <li>What you were doing</li>
-                    <li>What you expected</li>
-                    <li>What actually happened</li>
-                </ul>
-            </li>
+            <li>Or email feedback directly</li>
         </ul>
-        <p class="emoji">Even “this felt confusing” helps a lot 🙂</p>
     </div>
 
 </div>
 
 <footer>
     <p>
-        Thank you so much for testing 💜<br />
+        Thanks for testing 💜<br />
         Built with SwiftUI + CloudKit
     </p>
-
-    <p style="margin-top: 12px;">
-        <a 
-            href="https://cassidiedwards.github.io/thequotebookapp-privacy/" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            style="color:#6C63FF; text-decoration:none; font-weight:500;"
-        >
+    <p>
+        <a href="https://cassidiedwards.github.io/thequotebookapp-privacy/" target="_blank" rel="noopener noreferrer">
             Privacy Policy
         </a>
     </p>
 </footer>
 
+<script>
+  // Copy buttons
+  document.querySelectorAll(".copy-btn").forEach(btn => {
+    btn.addEventListener("click", async () => {
+      const id = btn.getAttribute("data-copy");
+      const text = document.getElementById(id)?.innerText || "";
+      try {
+        await navigator.clipboard.writeText(text);
+        const original = btn.textContent;
+        btn.textContent = "Copied!";
+        setTimeout(() => (btn.textContent = original), 1200);
+      } catch {
+        alert("Copy failed — please select and copy manually.");
+      }
+    });
+  });
+
+  // Build badge from URL (?build=1.0.12)
+  const params = new URLSearchParams(window.location.search);
+  const build = params.get("build");
+  const badge = document.getElementById("buildBadge");
+  if (badge) badge.textContent = build ? `Build: ${build}` : "Build: —";
+</script>
 
 </body>
 </html>
+
