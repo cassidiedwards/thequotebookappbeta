@@ -230,14 +230,13 @@
 
     <div class="badges">
         <div class="badge">
-            🧪 Beta <small id="buildBadge">Build: —</small>
+            🧪 Beta <small id="buildBadge">Build: 1 —</small>
         </div>
     </div>
 
     <nav class="tester-nav">
-        <a href="#friends">🧡 Family & Friends</a>
-        <a href="#devs">🧑‍💻 Developers</a>
-        <a href="#feedback">💬 Feedback</a>
+        <a href="#friends">🧡 Family & Friends Testing</a>
+        <a href="#devs">🧑‍💻 Developer Testing</a>
     </nav>
 </header>
 
@@ -246,6 +245,49 @@
 </div>
 
 <div class="container">
+    <div class="card">
+        <h2>✨ What is this?</h2>
+        <p>
+            The Quote Book App is a personal, cloud-backed iOS app for collecting
+            quotes and sharing them with people you trust.
+        </p>
+        <ul>
+            <li>Save quotes you don’t want to forget</li>
+            <li>Add context like who said it and where</li>
+            <li>Mark favorites</li>
+            <li>Sync securely using iCloud</li>
+            <li>Try early multiplayer “Who Said That?” game features</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2>🧪 Why this is a beta</h2>
+        <ul>
+            <li>Some features are still evolving</li>
+            <li>You may see UI changes between updates</li>
+            <li>Data may reset occasionally</li>
+        </ul>
+        <p>
+            Your feedback helps shape how the app grows 💛
+        </p>
+    </div>
+
+    <div class="card">
+        <h2>📲 How to join the TestFlight</h2>
+        <i>Must have Apple Device running on iOS 26 or later.</i>
+        <ol>
+            <li>Install Apple’s <strong>TestFlight</strong> app from the App Store</li>
+            <li>Tap the button below</li>
+            <li>Install The Quote Book App</li>
+            <li>Use <strong>TestFlight → Send Feedback</strong></li>
+        </ol>
+    </div>
+    
+    <div class="cta">
+        <a href="https://testflight.apple.com/join/YOURCODEHERE">
+            🚀 Join the TestFlight Beta
+        </a>
+    </div>
 
     <div id="friends" class="card anchor-target">
         <h2>🧡 Family & Friends</h2>
@@ -255,18 +297,6 @@
             <li>Do favorites and sharing work as expected?</li>
             <li>Does anything feel unnecessary or missing?</li>
         </ul>
-
-        <div class="template">
-            <strong>Copy & paste feedback template:</strong>
-            <pre id="friendsTemplate">Device / iOS:
-What I was trying to do:
-What I expected:
-What happened:
-Screenshot (optional):</pre>
-            <div class="copy-row">
-                <button class="copy-btn" data-copy="friendsTemplate">Copy template</button>
-            </div>
-        </div>
     </div>
 
     <div id="devs" class="card anchor-target">
@@ -278,42 +308,12 @@ Screenshot (optional):</pre>
             <li>Performance observations</li>
             <li>Architecture/refactor suggestions</li>
         </ul>
-
-        <div class="template">
-            <strong>Copy & paste debug template:</strong>
-            <pre id="devTemplate">Device / iOS:
-Build:
-Steps to reproduce:
-Expected:
-Actual:
-Frequency:
-Logs or screenshots:</pre>
-            <div class="copy-row">
-                <button class="copy-btn" data-copy="devTemplate">Copy template</button>
-            </div>
-        </div>
-
-        <div class="dev-cta">
-            <strong>Dev-only contact:</strong><br/>
-            <a href="mailto:cassidiedwards12@yahoo.com?subject=Quote%20Book%20Beta%20Feedback">
-                cassidiedwards12@yahoo.com
-            </a>
-        </div>
     </div>
-
-    <div id="feedback" class="card anchor-target">
-        <h2>💬 How to give feedback</h2>
-        <ul>
-            <li>Use <strong>TestFlight → Send Feedback</strong></li>
-            <li>Or email feedback directly</li>
-        </ul>
-    </div>
-
 </div>
 
 <footer>
     <p>
-        Thanks for testing 💜<br />
+        Thank you so much for testing 💜<br />
         Built with SwiftUI + CloudKit
     </p>
     <p>
@@ -324,22 +324,6 @@ Logs or screenshots:</pre>
 </footer>
 
 <script>
-  // Copy buttons
-  document.querySelectorAll(".copy-btn").forEach(btn => {
-    btn.addEventListener("click", async () => {
-      const id = btn.getAttribute("data-copy");
-      const text = document.getElementById(id)?.innerText || "";
-      try {
-        await navigator.clipboard.writeText(text);
-        const original = btn.textContent;
-        btn.textContent = "Copied!";
-        setTimeout(() => (btn.textContent = original), 1200);
-      } catch {
-        alert("Copy failed — please select and copy manually.");
-      }
-    });
-  });
-
   // Build badge from URL (?build=1.0.12)
   const params = new URLSearchParams(window.location.search);
   const build = params.get("build");
