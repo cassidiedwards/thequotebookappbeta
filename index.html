@@ -217,6 +217,59 @@
         .anchor-target {
             scroll-margin-top: 24px;
         }
+        details.dev-docs {
+          margin-top: 20px;
+          border-radius: 16px;
+          background: #F9FAFF;
+          border: 1px solid rgba(108,99,255,0.18);
+          padding: 16px 20px;
+        }
+        
+        details.dev-docs summary {
+          cursor: pointer;
+          font-weight: 700;
+          font-size: 1.05rem;
+          color: var(--primary);
+          list-style: none;
+          outline: none;
+        }
+        
+        details.dev-docs summary::-webkit-details-marker {
+          display: none;
+        }
+        
+        details.dev-docs summary::before {
+          content: "▶";
+          display: inline-block;
+          margin-right: 8px;
+          transition: transform 0.2s ease;
+        }
+        
+        details.dev-docs[open] summary::before {
+          transform: rotate(90deg);
+        }
+        
+        details.dev-docs .doc-content {
+          margin-top: 14px;
+          color: var(--text);
+          font-size: 0.95rem;
+        }
+        
+        details.dev-docs code {
+          display: block;
+          background: #111827;
+          color: #E5E7EB;
+          padding: 14px;
+          border-radius: 12px;
+          font-size: 0.85rem;
+          overflow-x: auto;
+          margin: 10px 0;
+        }
+        
+        .doc-section {
+          margin-bottom: 20px;
+        }
+
     </style>
 </head>
 <body>
@@ -237,6 +290,8 @@
     <nav class="tester-nav">
         <a href="#friends">🧡 Family & Friends Testing</a>
         <a href="#devs">🧑‍💻 Developer Testing</a>
+        <a href="bugfixes"> 🐛 Bug Fixes<a/>
+        <a href="newrelease"> 🗓️ Planned Upcoming and New Releases<a/>
     </nav>
 </header>
 
@@ -249,14 +304,16 @@
         <h2>✨ What is this?</h2>
         <p>
             The Quote Book App is a personal, cloud-backed iOS app for collecting
-            quotes and sharing them with people you trust.
+            quotes and having the option to share them with people who also use the app in our friend group.
         </p>
         <ul>
-            <li>Save quotes you don’t want to forget</li>
+            <li>Save quotes you don’t want to forget privately</li>
             <li>Add context like who said it and where</li>
-            <li>Mark favorites</li>
+            <li>Mark your favorites</li>
             <li>Sync securely using iCloud</li>
-            <li>Try early multiplayer “Who Said That?” game features</li>
+            <li>Share your quotes with others using the app</li>
+            <li>Heart other users shared quotes</li>
+            <li>Try early multiplayer “Who Said That?” game features with shared quotes</li>
         </ul>
     </div>
 
@@ -289,6 +346,24 @@
         </a>
     </div>
 
+
+    <div id="bugfixes" class="card anchor-target">
+        <h2>🐛 Bug Fixes</h2>
+        <ul>
+            <li>No bugs reported in this corner!</li>
+        </ul>
+        <h1>Issues? Use <strong>Test Flight → Send Feedback</strong> to let me know!</h1>
+    </div>
+
+    <div id="newreleases" class="card anchor-target">
+        <h2>🗓️ Planned Updated Feature Enhancements</h2>
+        <ul>
+            <li>Update the feed so it is more specific to users accepted Friends instead of shared quotes being visible to all users of the app. </li>
+            <li>Create different types of quote books to share with friends that the game will trigger off of.</li>
+        </ul>
+        <h1>Any ideas? All are absolutely welcome and encouraged! Use <strong>Test Flight → Send Feedback</strong> to let me know!</h1>
+    </div>
+
     <div id="friends" class="card anchor-target">
         <h2>🧡 Family & Friends Testing</h2>
         <ul>
@@ -310,6 +385,51 @@
             <li>Let me know if you'd like access to the code for any architecture/refactor suggestions.</li>
             <h1>Feedback? Use <strong>Test Flight → Send Feedback</strong> to let me know!</h1>
         </ul>
+        <details class="dev-docs">
+          <summary>📚 Developer Documentation</summary>
+        
+          <div class="doc-content">
+        
+            <div class="doc-section">
+              <strong>Architecture</strong>
+              <p>
+                Built using SwiftUI + CloudKit with a focus on private, friend-only data
+                sharing and minimal backend maintenance.
+              </p>
+            </div>
+              
+            <div class="doc-section">
+              <strong>CloudKit</strong>
+              <ul>
+                <li>Private database for personal quotes</li>
+                <li>Shared records for friend interactions</li>
+                <li>Schema deployed from Development → Production</li>
+              </ul>
+            </div>
+        
+            <div class="doc-section">
+              <strong>Key Record Types</strong>
+              <code>
+        Quote Model<br/>
+        CD_Quote<br/>
+        QB_FeedQuote
+        QB_GameQuote
+        QB_QuoteLike
+        QB_RoomAnswer
+        QB_RoomPlayer
+        QB_RoomQuestion
+              </code>
+            </div>
+        
+            <div class="doc-section">
+              <strong>Testing Focus</strong>
+              <ul>
+                <li>CloudKit sync consistency</li>
+                <li>State restoration after backgrounding</li>
+                <li>Error handling for offline scenarios</li>
+              </ul>
+            </div>
+        </details>
     </div>
 </div>
 
