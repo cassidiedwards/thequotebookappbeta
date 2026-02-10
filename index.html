@@ -22,7 +22,68 @@
             color: var(--text);
         }
 
-        header {
+        :root {
+            --banner-bg: rgba(108,99,255,0.12);
+            --banner-border: rgba(108,99,255,0.22);
+            --banner-text: #2b2b5f;
+        }
+
+        .announce-bar {
+            position: sticky;
+            top: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 10px 14px;
+            background: var(--banner-bg);
+            border-bottom: 1px solid var(--banner-border);
+            color: var(--banner-text);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            font-weight: 600;
+        }
+
+        .announce-bar a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 800;
+        }
+
+        .announce-bar a:hover { text-decoration: underline; }
+
+        .announce-pill {
+            display: inline-flex;
+            align-items: center;
+            padding: 4px 10px;
+            border-radius: 999px;
+            font-size: 0.85rem;
+            background: rgba(255,183,3,0.18);
+            border: 1px solid rgba(255,183,3,0.28);
+            color: #7a5200;
+            white-space: nowrap;
+        }
+
+        .announce-close {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            border: 0;
+            background: transparent;
+            font-size: 18px;
+            cursor: pointer;
+            color: var(--muted);
+            padding: 6px 10px;
+            border-radius: 10px;
+        }
+
+        .announce-close:hover {
+            background: rgba(0,0,0,0.06);
+            color: var(--text);
+        }
+                header {
             text-align: center;
             padding: 80px 20px 40px;
         }
@@ -240,7 +301,14 @@
     </style>
 </head>
 <body>
-
+    <div class="announce-bar" id="announceBar" role="status" aria-live="polite">
+        <span class="announce-pill">📢 Announcements</span>
+        <span>
+            Build 1.0.0: Has been released to TestFlight Beta testers!
+            <a href="#backstory">View details</a>
+        </span>
+        <button class="announce-close" type="button" aria-label="Dismiss announcement" onclick="dismissBanner()">✕</button>
+    </div>
 <header>
     <h1>📖 The Quote Book App</h1>
     <p>
@@ -250,7 +318,7 @@
 
     <div class="badges">
         <div class="badge">
-            🧪 Beta <small id="buildBadge">Build: —</small>
+            🧪 Beta <small id="buildBadge">Build: 1.0</small>
         </div>
     </div>
 
@@ -258,30 +326,67 @@
         <a href="#friends">🧡 Family & Friends Testing</a>
         <a href="#devs">🧑‍💻 Developer Testing</a>
         <a href="#bugfixes">🐛 Bug Fixes</a>
-        <a href="#newrelease">🗓️ Planned Updated Feature Enhancements</a>
+        <a href="#newrelease">🗓️ Planned Feature Enhancements</a>
 
     </nav>
 </header>
-
-<div class="app-preview">
-    <img src="QuoteBookAppIcon.png" alt="The Quote Book App screenshot" />
-</div>
-
+    <div class="app-preview">
+        <img src="QuoteBookAppIcon.png" alt="The Quote Book App screenshot" />
+    </div>
+    <div class="cta">
+        <a href="https://testflight.apple.com/join/YOURCODEHERE">
+                🚀 Join the TestFlight Beta
+        </a>
+    </div>
 <div class="container">
-    <div class="card">
-        <h2>✨ What is this?</h2>
+    <div id="backstory" class="card anchor-target">
+        <h2>💖 Backstory</h2>
         <p>
-            The Quote Book App is a personal, cloud-backed iOS app for collecting
-            quotes and having the option to share them with people who also use the app in our friend group.
+            For years, my friends and family have made time for monthly game nights — our way of staying connected
+            through busy schedules and growing circles. One of our favorite traditions has always been sharing
+            funny memories or ridiculous things someone said.
         </p>
+
+        <p>
+            Most of those moments lived in our Notes apps… and every share inevitably turned into:
+            <em>“Welp — guess who said THIS last week?”</em> 😂
+        </p>
+
+        <p>
+            Eventually, that sparked a bigger idea:
+            What if this became an actual game of <em>“Who said that?”</em>
+            Or better yet — what if we could share these memories anytime, without waiting weeks or months?
+        </p>
+
+        <p>
+            Over the past year, I spent my free time diving head-first into Apple’s development ecosystem.
+            After classes, countless builds, lots of coffee, and yes… a few tears 😅 — The Quote Book App was born.
+            It does exactly what we hoped: a fun, simple way to save, share, and relive the moments that keep us
+            laughing and connected.
+        </p>
+
+        <p>
+            This is the first iOS app I’ve ever built, and while I still have so much to learn,
+            I’m incredibly proud of how far it’s come. I’m grateful to be using the gifts God gave me
+            to build something that brings joy, connection, and positivity to the people I love.
+        </p>
+    </div>
+    <div class="card">
+        <h2>✨ What is it?</h2>
+
+        <p>
+            The Quote Book App is a personal, cloud-backed iOS app for collecting quotes,
+            with the option to share them privately with friends who also use the app.
+        </p>
+
         <ul>
-            <li>Save quotes you don’t want to forget privately</li>
+            <li>Save quotes you don’t want to forget</li>
             <li>Add context like who said it and where</li>
-            <li>Mark your favorites</li>
+            <li>Mark favorites for quick access</li>
             <li>Sync securely using iCloud</li>
-            <li>Share your quotes with others using the app</li>
-            <li>Heart other users shared quotes</li>
-            <li>Try early multiplayer “Who Said That?” game features with shared quotes</li>
+            <li>Share quotes with others using the app</li>
+            <li>Heart quotes shared by friends</li>
+            <li>Try early multiplayer “Who Said That?” game features using shared quotes</li>
         </ul>
     </div>
 
@@ -306,14 +411,12 @@
             <li>Install The Quote Book App</li>
             <li>Use <strong>TestFlight → Send Feedback</strong></li>
         </ol>
+        <div class="cta">
+            <a href="https://testflight.apple.com/join/YOURCODEHERE">
+                    🚀 Join the TestFlight Beta
+            </a>
+        </div>
     </div>
-    
-    <div class="cta">
-    <a href="https://testflight.apple.com/join/YOURCODEHERE">
-            🚀 Join the TestFlight Beta
-    </a>
-    </div>
-
     <div id="bugfixes" class="card anchor-target">
         <h2>🐛 Bug Fixes</h2>
         <ul>
@@ -325,8 +428,8 @@
     <div id="newrelease" class="card anchor-target">
         <h2>🗓️ Planned Feature Enhancements</h2>
         <ul>
-            <li>Update the feed so it is more specific to users accepted Friends instead of shared quotes being visible to all users of the app. </li>
-            <li>Create different types of quote books to share with friends that the game will trigger off of.</li>
+            <li>Update Shared Quotes Feed to only use shared quotes from players in the game room. </br> <i>Currently the game is pulling all quotes in the Shared Quotes Feed to build the game context.</i></li>
+            <li>Update to custom UI.</li>
         </ul>
         <h4>Any ideas? All are absolutely welcome and encouraged! Use <strong>Test Flight → Send Feedback</strong> to let me know!</h4>
     </div>
@@ -358,7 +461,7 @@
             <div class="doc-section">
               <strong>Architecture</strong>
               <p>
-                Built using SwiftUI + CloudKit with a focus on private, friend-only data
+                Built using SwiftUI, SwiftData, + CloudKit with a focus on private, friend-only data
                 sharing and minimal backend maintenance.
               </p>
             </div>
@@ -375,25 +478,25 @@
             <div class="doc-section">
               <strong>Key Record Types</strong>
               <code>
-        Quote Model<br/>
-        CD_Quote<br/>
-        QB_FeedQuote<br/>
-        QB_GameQuote<br/>
-        QB_QuoteLike<br/>
-        QB_RoomAnswer<br/>
-        QB_RoomPlayer<br/>
-        QB_RoomQuestion<br/>
+                Quote Model<br/>
+                CD_Quote<br/>
+                QB_FeedQuote<br/>
+                QB_GameQuote<br/>
+                QB_QuoteLike<br/>
+                QB_RoomAnswer<br/>
+                QB_RoomPlayer<br/>
+                QB_RoomQuestion<br/>
               </code>
             </div>
             <div class="doc-section">
               <strong>Services</strong>
               <code>
-        Quote Like Service<br/>
-        Player Identity<br/>
-        Live Room Service<br/>
-        Feed Service<br/>
-        Share Service<br/>
-        Quote Repository<br/>
+                Quote Like Service<br/>
+                Player Identity<br/>
+                Live Room Service<br/>
+                Feed Service<br/>
+                Share Service<br/>
+                Quote Repository<br/>
               </code>
             </div>
           </div>
@@ -405,7 +508,7 @@
 <footer>
     <p>
         Thank you so much for your support and testing 💜<br />
-        Built with Apple SwiftUI + CloudKit
+        Built with Apple SwiftUI, SwiftData + CloudKit
     </p>
     <p>
         <a href="https://cassidiedwards.github.io/thequotebookapp-privacy/" target="_blank" rel="noopener noreferrer">
@@ -426,12 +529,35 @@
     window.scrollTo(0, 0);
   });
   // Build badge from URL (?build=1.0.12)
-  const params = new URLSearchParams(window.location.search);
+  /*const params = new URLSearchParams(window.location.search);
   const build = params.get("build");
   const badge = document.getElementById("buildBadge");
-  if (badge) badge.textContent = build ? `Build: ${build}` : "Build: —";
+  if (badge) badge.textContent = build ? `Build: ${build}` : "Build: —";*/
+
+  function dismissBanner() {
+    const bar = document.getElementById("announceBar");
+    if (!bar) return;
+    bar.style.display = "none";
+    localStorage.setItem("qba_announce_dismissed", "1");
+  }
+
+  window.addEventListener("load", () => {
+    // Keep your existing code
+    if (window.location.hash) {
+      history.replaceState(null, "", window.location.pathname + window.location.search);
+    }
+    window.scrollTo(0, 0);
+
+    // Persist dismissal (so it stays hidden once closed)
+    const dismissed = localStorage.getItem("qba_announce_dismissed");
+    if (dismissed === "1") {
+      const bar = document.getElementById("announceBar");
+      if (bar) bar.style.display = "none";
+    }
+  });
 </script>
 
 </body>
 </html>
+
 
